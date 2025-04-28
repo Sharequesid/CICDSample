@@ -1,4 +1,5 @@
 # CI/CD Sample app is for creating ci/cd for building artifacts
+- This sample code is only for demo purpose i will only create a build not to publish on any store.
 
 # CI- running unit test and creating build 
 # CD- Deploy app on maven or play store.
