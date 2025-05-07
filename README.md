@@ -31,5 +31,5 @@
 # 4. Run Unit tests
 - It runs unit tests located in the project. You can skip this step if you have not written any tests.
 
-# 4. Run Unit tests
-- It runs unit tests located in the project. You can skip this step if you have not written any tests.
+# 5. Build Release Bundle(AAB)
+- Time to build your release bundle. You can also build APK with assembleRelease command if you want. But I prefer bundle to optimize app size.
