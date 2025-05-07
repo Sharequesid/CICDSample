@@ -33,3 +33,14 @@
 
 # 5. Build Release Bundle(AAB)
 - Time to build your release bundle. You can also build APK with assembleRelease command if you want. But I prefer bundle to optimize app size.
+
+# 6. Sign Bundle
+- To use these keys from the workflow, we’ll add it to GitHub Secrets. So it’ll not be exposed.
+- To add Secrets, open your repository and go to Settings.
+- Now click on Secrets and variables from left panel-> Codespaces secrets -> New secret
+- Add the following Secrets in your repository
+
+SIGNING_KEY — base64 text of your Keystore file
+ALIAS — your alias name
+KEY_STORE_PASSWORD — password of your Keystore
+KEY_PASSWORD — your key password
