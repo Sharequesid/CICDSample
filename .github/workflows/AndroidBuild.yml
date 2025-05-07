@@ -80,7 +80,7 @@ jobs:
 
 
           - name: Sign APK
-            id: sign apk
+            id: sign_apk
             uses: r0adkll/sign-android-release@v1
             with:
               #check with your signed build path and then use it in my case is located at 'app\release' other case the path is 'app/build/outputs/bundle/release'
