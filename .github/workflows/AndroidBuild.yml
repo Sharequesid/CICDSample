@@ -63,8 +63,8 @@ jobs:
           # Above step is required for creating signed bundle
           # Step 5
           # Create APK Release
-          - name: Build Release APK project (APK) - ${{ env.main_project_module }} module
-            run: ./gradlew assemble
+          #- name: Build Release APK project (APK) - ${{ env.main_project_module }} module
+           # run: ./gradlew assemble
 
           # Step 6 : Creating signed bundle
           - name: Sign AAB
