@@ -58,9 +58,9 @@ jobs:
           # Step 5
           # Create Bundle AAB Release
           # Noted for main module build [main_project_module]:bundleRelease
-          #- name: Build app bundle release (AAB) - ${{ env.main_project_module }} module
-            #run: ./gradlew ${{ env.main_project_module }}:bundleRelease
-
+          - name: Build app bundle release (AAB) - ${{ env.main_project_module }} module
+            run: ./gradlew ${{ env.main_project_module }}:bundleRelease
+          # Above step is required for creating signed bundle
           # Step 5
           # Create APK Release
           - name: Build Release APK project (APK) - ${{ env.main_project_module }} module

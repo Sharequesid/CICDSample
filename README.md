@@ -37,7 +37,7 @@
 # 6. Sign Bundle
 - To use these keys from the workflow, we’ll add it to GitHub Secrets. So it’ll not be exposed.
 - To add Secrets, open your repository and go to Settings.
-- Now click on Secrets and variables from left panel-> Codespaces secrets -> New secret
+- Now click on Secrets and variables from left panel-> Actions -> in secret tab - Repository secrets-> create
 - Add the following Secrets in your repository
 
 SIGNING_KEY — base64 text of your Keystore file
