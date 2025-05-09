@@ -16,7 +16,6 @@
 - Upload Bundle(Optional)
 - Prepare Play Store Service Account
 - Deploy to Play Store
-- Notify Build status on Slack(Optional)
 
 ## Steps are used to create yaml file for creating and uploading apk/aab file.For sample code please see AndroidBuild.yml file and steps in comment.
 # 1. Checkout
@@ -99,9 +98,58 @@
       path: app/build/outputs/bundle/release/app-release.aab
 ```
 
-<p align="center">
 
-<img src="images/ci_cd_sample1.jpg" width="350" title="First screen">
-  <img src="images/ci_cd_sample2.jpg" width="350" alt="second screen">
+# 8. Prepare Play Store Service Account
+- You’ll need a service account to publish the app on the Play Store automatically.
+- If you already have a service account, download the JSON file, copy all content, and paste in Secrets.
+- Add the Secret in your repository - SERVICE_ACCOUNT_JSON — content of JSON file
+
+- If you don’t have a service account, follow the below steps to create one.
+
+- Enable Google APIs in the Google Cloud Console
+1. Go to the Google Cloud Console. 
+2. Select your project from the projects list or create a new one.
+3. Go to the API & Services tab and click the "Enable API and Services" button.
+4. In the API Library tab, search for the Google Play Developer Reporting API.
+5. Enable the API for your project.
+6. Enable Google Play Android Developer API.
+7. Enable Cloud Pub/Sub API(Optional).
+
+- Go to the Google Cloud Console ➡ IAM & Admin ➡ Service Accounts.
+1. Click Create Service Account.
+2. Enter your service account name, copy its ID, and click Create and Continue.
+3. Grant this service account access to the project by enabling:
+4. Skip the last step and click Done.
+
+- Create and download the service key
+1. Go to the Service Accounts section in the Google Cloud Console, choose your recently created key, click on the three dots to open the Actions dropdown menu, and then choose Manage Keys.
+2. Click the Add Key button, then click Create new key.
+3. In the pop-up window, ensure that JSON is chosen and click Create to generate and download the JSON Key on your computer. Downloaded JSON required for adding secret in github.
+
+- Go to the Google Play account, 
+1. Navigate to the Users and Permissions section in the Google Play Console and click Invite new users.
+2. Enter the email of the service account/Copied ID that you created before, select your application, and click Apply.
+3. Grant the following account permissions and click Invite user at the bottom of the page. Afterwards, you will be directed to the Users and Permissions section, where you should observe your recently established account listed as active.
+
+
+# 9. Deploy to Play Store
+- This action will help you upload an Android .apk or .aab file to the Google Play Console using the Google Play Developer API v3.
+```yaml
+- name: Deploy to Play Store (BETA)
+  id: deploy
+  uses: r0adkll/upload-google-play@v1
+  with:
+    serviceAccountJson: service_account.json
+    packageName: com.package
+    releaseFile: app/build/outputs/bundle/release/app-release.aab
+    track: beta
+    whatsNewDirectory: whatsnew/
+```
+
+# Screens
+
+<p>
+    <img src="images/ci_cd_sample1.jpg" width="350" title="First screen">
+    <img src="images/ci_cd_sample2.jpg" width="350" alt="second screen">
     <img src="images/ci_cd_sample3.jpg" width="350" alt="after all things done">
 </p>
